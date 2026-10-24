@@ -1,5 +1,9 @@
 # Clean Your TV — LG webOS
 
+> **lfkdsk/zh-aerials 分支**：在上游 `b182393` 的基础上增加了中文界面与 24 小时制、5 列卡片不重叠、
+> 自定义 16:9 磁贴、Apple TV 航拍屏保（设置面板、本地缓存、接管 LG 系统屏保，在其他 App 里空闲时也会播放），
+> 以及输入诊断日志。航拍的独立 App 与可复用模块见 [lfkdsk/webos-aerials](https://github.com/lfkdsk/webos-aerials)。
+
 **A clean home screen for LG webOS. No root. No always-on computer.**
 
 Keep your favorite apps in a personal dock and app grid, without sponsored rows
