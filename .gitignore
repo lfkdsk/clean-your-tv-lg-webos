@@ -12,3 +12,6 @@ venv/
 .venv/
 __pycache__/
 .DS_Store
+
+# Personal tile artwork (third-party logos); see custom-icons/README.md
+custom-icons/*.png

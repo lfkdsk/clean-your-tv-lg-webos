@@ -41,8 +41,13 @@ async def main(host, list_only):
             continue
         url = p.get("largeIcon") if str(p.get("largeIcon", "")).startswith("http") else p.get("icon")
         name = "".join(ch if ch.isalnum() or ch in "._-" else "_" for ch in p["id"]) + ".png"
+        custom = os.path.join(lgtv.HERE, "custom-icons", name)
         try:
-            data = urllib.request.urlopen(url, context=ctx, timeout=10).read()
+            if os.path.exists(custom):  # Hand-made 16:9 tile overrides the TV's square icon.
+                with open(custom, "rb") as f:
+                    data = f.read()
+            else:
+                data = urllib.request.urlopen(url, context=ctx, timeout=10).read()
         except Exception as e:
             print(f"  no icon for {p['id']}: {e}")
             continue
