@@ -19,6 +19,30 @@ function fromLauncher(m){
 }
 function reply(m,s,subscribed){m.respond(Object.assign({returnValue:true,subscribed:!!subscribed},s));}
 
+// Which app was in front, so a screensaver hand-off can return to it. Web apps may not ask the
+// application manager (ACG) and a new SSAP pairing would prompt on the TV, so read what the
+// Clean Your TV Home Helper already logs on every foreground change.
+var fs=require('fs');
+var HELPER_LOG='/media/developer/apps/usr/palm/applications/com.local.nativehome/state/controller.log';
+function lastForeground(skip){
+ var text;
+ try{
+  var fd=fs.openSync(HELPER_LOG,'r'),size=fs.fstatSync(fd).size,len=Math.min(size,16384),buf=Buffer.alloc(len);
+  fs.readSync(fd,buf,0,len,size-len);fs.closeSync(fd);text=buf.toString('utf8');
+ }catch(e){return null;}
+ var lines=text.split('\n');
+ for(var i=lines.length-1;i>=0;i--){
+  var e;try{e=JSON.parse(lines[i]);}catch(_){continue;}
+  if(e&&e.event==='foreground'&&typeof e.id==='string'&&e.id&&skip.indexOf(e.id)<0)return e.id;
+ }
+ return null;
+}
+service.register('foreground',function(m){
+ if(!fromLauncher(m)){m.respond({returnValue:false,errorText:'caller-not-authorized'});return;}
+ var skip=[APP_ID,'com.lfkdsk.aerials','com.webos.app.home'].concat((m.payload||{}).skip||[]);
+ m.respond({returnValue:true,appId:lastForeground(skip)});
+});
+
 service.register('status',function(m){reply(m,cache.status());});
 service.register('clear',function(m){
  if(!fromLauncher(m)){m.respond({returnValue:false,errorText:'caller-not-authorized'});return;}
