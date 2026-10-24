@@ -14,7 +14,7 @@ html, body {
   overflow: hidden;
   background: #000;
   color: #fff;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'LG Smart UI', 'Noto Sans CJK SC', sans-serif;
   cursor: default;
 }
 
@@ -83,6 +83,7 @@ body.scrolled header {
 }
 
 #ampm {
+  display: none;
   margin: 0 0 16px 12px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 30px;
@@ -161,7 +162,7 @@ body.scrolled header {
 
 .item {
   position: absolute;
-  width: 360px;
+  width: 316px;
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 400ms ease, transform 400ms cubic-bezier(0.2, 0.8, 0.3, 1),
@@ -189,9 +190,9 @@ body.editing #glass { opacity: 0 !important; }
 
 .card {
   position: relative;
-  width: 360px;
-  height: 202px;
-  border-radius: 32px;
+  width: 316px;
+  height: 178px;
+  border-radius: 28px;
   overflow: hidden;
   background: #1c1c1e;
   transition: transform 180ms ease;
@@ -202,7 +203,7 @@ body.editing #glass { opacity: 0 !important; }
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 32px;
+  border-radius: 28px;
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.1);
 }
 
@@ -249,7 +250,7 @@ body.editing #glass { opacity: 0 !important; }
   position: absolute;
   left: 0;
   top: 0;
-  border-radius: 47px;
+  border-radius: 42px;
   border: 3px solid rgba(255, 255, 255, 0.8);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.07));
   box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.19), 0 0 12px 4px rgba(255, 255, 255, 0.08);
