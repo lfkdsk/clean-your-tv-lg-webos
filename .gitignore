@@ -15,3 +15,5 @@ __pycache__/
 
 # Personal tile artwork (third-party logos); see custom-icons/README.md
 custom-icons/*.png
+# Public Apple root + intermediate certificates the Aerials cache service trusts (not a secret)
+!aerials-service/ca.pem
