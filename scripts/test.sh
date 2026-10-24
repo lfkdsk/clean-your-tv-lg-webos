@@ -12,7 +12,8 @@ for test in native/prototype/test-*.cjs; do node "$test"; done
 mkdir -p build/tests
 cc -std=c99 -Wall -Wextra -Werror native/prototype/filter.c native/prototype/test_filter.c -o build/tests/test-filter
 build/tests/test-filter
-for file in launcher/*.js native/app/*.js native/service/*.js renewal-service/*.js; do node --check "$file"; done
+for file in launcher/*.js native/app/*.js native/service/*.js renewal-service/*.js aerials-service/*.js; do node --check "$file"; done
+node --test --test-timeout=40000 tests/aerials-cache.test.mjs
 
 python3 -m unittest discover -s tests/setup
 for test in tests/updates/*.cjs; do node "$test"; done

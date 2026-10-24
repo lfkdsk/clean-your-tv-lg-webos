@@ -1,7 +1,7 @@
 (function(){
  'use strict';
  var panel=document.createElement('section');panel.id='renewalPanel';panel.className='hidden';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','Home settings');
- panel.innerHTML='<div class="renewal-card"><div class="renewal-heading"><h2>Home settings</h2><span class="renewal-beta">BETA</span></div><h3>Developer Mode auto-renewal</h3><p>Renew your Developer Mode session directly with LG. No external server or computer needed.</p><p class="renewal-warning">Real renewal on TVs without root still needs community validation. Keep checking your Developer Mode timer until renewal is confirmed. A TV that stays off or offline cannot renew.</p><div id="renewalStatus" aria-live="polite">Loading status…</div><div class="renewal-actions"><button id="renewalToggle">Enable Beta</button><button id="renewalCheck">Check session</button><button id="renewalDiagnostics">Diagnostics</button><button id="renewalUpdates">Software updates</button><button id="renewalTV">TV settings</button><button id="renewalClose">Back</button></div><pre id="renewalDetails" class="hidden"></pre></div>';
+ panel.innerHTML='<div class="renewal-card"><div class="renewal-heading"><h2>Home settings</h2><span class="renewal-beta">BETA</span></div><h3>Developer Mode auto-renewal</h3><p>Renew your Developer Mode session directly with LG. No external server or computer needed.</p><p class="renewal-warning">Real renewal on TVs without root still needs community validation. Keep checking your Developer Mode timer until renewal is confirmed. A TV that stays off or offline cannot renew.</p><div id="renewalStatus" aria-live="polite">Loading status…</div><div class="renewal-actions"><button id="renewalToggle">Enable Beta</button><button id="renewalCheck">Check session</button><button id="renewalDiagnostics">Diagnostics</button><button id="renewalUpdates">Software updates</button><button id="renewalTV">TV settings</button><button id="renewalSaver">航拍屏保</button><button id="renewalClose">Back</button></div><pre id="renewalDetails" class="hidden"></pre></div>';
  document.body.appendChild(panel);
  var status=document.getElementById('renewalStatus'),toggle=document.getElementById('renewalToggle'),check=document.getElementById('renewalCheck'),details=document.getElementById('renewalDetails');
  var buttons=Array.prototype.slice.call(panel.querySelectorAll('button')),index=0,state=null,busy=false;
@@ -39,6 +39,7 @@
  };
  function close(){panel.classList.add('hidden');}
  document.getElementById('renewalClose').onclick=close;
+ document.getElementById('renewalSaver').onclick=function(){close();if(window.SaverPanel)window.SaverPanel.open();};
  document.getElementById('renewalUpdates').onclick=function(){close();window.HomeUpdates.open();};
  document.getElementById('renewalTV').onclick=function(){close();try{var b=new PalmServiceBridge();b.onservicecallback=function(){b.cancel();};b.call('luna://com.webos.applicationManager/launch',JSON.stringify({id:'com.palm.app.settings',params:{}}));}catch(_){}};
  buttons.forEach(function(b,i){b.addEventListener('mouseover',function(){focus(i);});});

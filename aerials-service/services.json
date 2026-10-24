@@ -1,0 +1,1 @@
+{"id":"com.gathin.tvhome.aerials","description":"Local cache for the Aerial screensaver","services":[{"name":"com.gathin.tvhome.aerials"}],"requiredACG":["activity.operation"]}
