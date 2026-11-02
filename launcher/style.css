@@ -408,3 +408,13 @@ body.helper-stopped #date { position: absolute; left: 8px; top: 150px; margin: 0
 .saver-value { color: #9fd0ff; font-weight: 500; }
 .saver-row:focus .saver-value { color: #fff; }
 #saverCache { white-space: pre-line; font-size: 23px; line-height: 1.5; color: #ccd1db; margin: 8px 0 20px; min-height: 70px; }
+
+/* ---- Bluetooth audio panel ------------------------------------------------------------------ */
+
+#btPanel { position: fixed; inset: 0; z-index: 510; background: rgba(7, 10, 14, 0.93); display: flex; align-items: center; justify-content: center; color: #f5f7fa; }
+#btPanel.hidden { display: none; }
+#btRows { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+#btRows h3 { font-size: 24px; font-weight: 500; color: #9aa3b2; margin: 18px 0 2px; }
+#btStatus { white-space: pre-line; font-size: 23px; line-height: 1.5; color: #e1cc9a; margin: 0 0 16px; }
+#btStatus:empty { display: none; }
+#btLabel { max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
